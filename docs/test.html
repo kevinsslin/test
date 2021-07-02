@@ -17,11 +17,21 @@
     <button onclick="change_text()">Click me</button>
     傳送訊息給所有人
     <script>
-     function change_text(){
-        var t1 =  "莫德納疫苗";
-        document.getElementById("demo").innerHTML = t1;
-        console.log(t1 + "-這邊是console log產生的");
+      const request = new XMLHttpRequest();
+      
+      function getRequest(){
+          document.getElementById("demo").innerHTML = request.responseText;
       }
+
+      function change_text(){
+        console.log("這邊是console log產生的");
+        
+        request.open('GET', endpoint,true);
+    
+request.send(null); 
+        request.addEventListener('load',getRequest);
+        console.log('request.responseText=' + request.responseText);
+      } 
 
     </script>
 
